@@ -44,7 +44,7 @@ public class Loading_form extends javax.swing.JFrame {
         jLabel2.setText("Chào mừng");
 
         Percentext.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        Percentext.setText("%");
+        Percentext.setText("     %");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -62,8 +62,8 @@ public class Loading_form extends javax.swing.JFrame {
                 .addContainerGap(158, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(Percentext, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(262, 262, 262))
+                .addComponent(Percentext)
+                .addGap(264, 264, 264))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
