@@ -38,6 +38,8 @@ public class Dangkitaikhoan_form extends javax.swing.JPanel {
         txtGioitinh = new javax.swing.JTextField();
         txtNgaysinh = new javax.swing.JTextField();
         btlDangki = new javax.swing.JButton();
+        btlDangki1 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         jTextField1.setBackground(new java.awt.Color(51, 204, 255));
         jTextField1.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
@@ -56,7 +58,11 @@ public class Dangkitaikhoan_form extends javax.swing.JPanel {
 
         jLabel5.setText("Ngày sinh");
 
-        btlDangki.setText("Xác nhận");
+        btlDangki.setText("Tiếp Tục>>");
+
+        btlDangki1.setText("<<Quay lại ");
+
+        jButton1.setText("Xác nhận");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -93,12 +99,16 @@ public class Dangkitaikhoan_form extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtGioitinh)
                                     .addComponent(txtNgaysinh))))
-                        .addGap(0, 33, Short.MAX_VALUE)))
+                        .addGap(0, 33, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btlDangki1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btlDangki)
+                        .addGap(11, 11, 11)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(113, 113, 113)
-                .addComponent(btlDangki)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,14 +139,19 @@ public class Dangkitaikhoan_form extends javax.swing.JPanel {
                     .addComponent(jLabel5)
                     .addComponent(txtNgaysinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btlDangki)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btlDangki1)
+                    .addComponent(btlDangki)
+                    .addComponent(jButton1))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btlDangki;
+    private javax.swing.JButton btlDangki1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

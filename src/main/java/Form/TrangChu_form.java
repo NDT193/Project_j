@@ -4,6 +4,8 @@
  */
 package Form;
 
+import Controller.Service;
+
 /**
  *
  * @author tuann
@@ -12,6 +14,8 @@ public class TrangChu_form extends javax.swing.JFrame {
     /**
      * Creates new form TrangChu_form
      */
+    
+    private Service sv = new Service();
     public TrangChu_form() {
         initComponents();
        
@@ -33,6 +37,7 @@ public class TrangChu_form extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        btlQuanlidanhmuc = new javax.swing.JButton();
         swPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -48,11 +53,23 @@ public class TrangChu_form extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("jButton1");
+        jButton2.setText("Chi Tiết Đơn Hàng");
 
         jButton3.setText("Quản Lý Sản Phẩm");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Báo Cáo Thống Kê");
+
+        btlQuanlidanhmuc.setText("Quản Lý Danh Mục");
+        btlQuanlidanhmuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btlQuanlidanhmucActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -65,7 +82,8 @@ public class TrangChu_form extends javax.swing.JFrame {
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btlQuanlidanhmuc, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -79,8 +97,10 @@ public class TrangChu_form extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(btlQuanlidanhmuc, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         swPanel.setLayout(new java.awt.BorderLayout());
@@ -112,8 +132,21 @@ public class TrangChu_form extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-         swith();
+        Sanpham_panel sanpham = new Sanpham_panel();
+        sv.Switch(swPanel, sanpham);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btlQuanlidanhmucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btlQuanlidanhmucActionPerformed
+        // TODO add your handling code here:
+        QuanliDanhmuc_Form dm =new QuanliDanhmuc_Form();
+        sv.Switch(swPanel, dm);
+    }//GEN-LAST:event_btlQuanlidanhmucActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        QuanliSanpham_panel qlsp = new QuanliSanpham_panel();
+         sv.Switch(swPanel, qlsp);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -151,6 +184,7 @@ public class TrangChu_form extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btlQuanlidanhmuc;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -160,10 +194,5 @@ public class TrangChu_form extends javax.swing.JFrame {
     private javax.swing.JPanel swPanel;
     // End of variables declaration//GEN-END:variables
 
-    private void swith() {
-        Sanpham_panel s1 = new Sanpham_panel();
-        swPanel.add(s1);
-        revalidate();
-        repaint();
-    }
+
 }

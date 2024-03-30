@@ -5,12 +5,18 @@
 package Controller;
 
 import Database.MyConnect;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
+import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -20,7 +26,7 @@ import javax.swing.table.DefaultTableModel;
 public class Service {
 
     Connection conn = new MyConnect().getConnection();
-    
+
 //---------------Hàm Loadata-------------   
     public void Loadata(JTable table, String tablename) {
         try {
@@ -120,7 +126,11 @@ public class Service {
             }
 
             // Thêm điều kiện WHERE vào câu lệnh UPDATE
-            sql.append(" WHERE Id =").append(condition);
+           if (isInteger(condition.toString())) {     
+                sql.append(" WHERE maDm = ").append(condition);
+            } else {
+                sql.append(" WHERE maDm = ").append("'").append(condition).append("'");
+            }
 
             st.executeUpdate(sql.toString());
 
@@ -133,12 +143,12 @@ public class Service {
     }
 
     //-----------DeleteData
-    public boolean DeleteData(String tableName, String condition) {
+    public boolean DeleteData(String tableName, String columname, String key) {
         boolean success = false;
 
         try {
             Statement st = conn.createStatement();
-            String sql = "Delete from " + tableName + " Where Id=" + condition;
+            String sql = "Delete from " + tableName + " where " + columname + "= " + key;
 
             st.executeUpdate(sql);
 
@@ -149,7 +159,32 @@ public class Service {
 
         return success;
     }
-    
+
+    //------------PushData2Txt------
+    public void PushDataTotxt(JTable table, JTextField[] textFields) {
+        table.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 1) { // Kiểm tra chỉ nhấp chuột một lần
+                    int selectedRow = table.getSelectedRow();
+                    if (selectedRow != -1) {
+                        DefaultTableModel model = (DefaultTableModel) table.getModel();
+                        int columnCount = model.getColumnCount();
+                        if (columnCount == textFields.length) {
+                            for (int i = 0; i < columnCount; i++) {
+                                Object value = model.getValueAt(selectedRow, i);
+                                textFields[i].setText(value != null ? value.toString() : "");
+                            }
+                        } else {
+                            System.out.println("Số cột của bảng không khớp với số lượng textfield");
+                        }
+                    }
+                }
+            }
+        });
+
+    }
+
     //-----------------
     private boolean isInteger(String value) {
         try {
@@ -158,6 +193,14 @@ public class Service {
         } catch (NumberFormatException e) {
             return false;
         }
+    }
+
+    //----------------SwitchPanel------
+    public void Switch(JPanel panel1, JPanel panel2) {
+        panel1.removeAll();
+        panel1.add(panel2);
+        panel1.revalidate();
+        panel1.repaint();
     }
 
 }

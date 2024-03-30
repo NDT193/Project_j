@@ -59,6 +59,7 @@
                       <Component id="jButton2" min="-2" pref="146" max="-2" attributes="0"/>
                       <Component id="jButton3" min="-2" pref="146" max="-2" attributes="0"/>
                       <Component id="jButton5" min="-2" pref="146" max="-2" attributes="0"/>
+                      <Component id="btlQuanlidanhmuc" min="-2" pref="146" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -75,8 +76,10 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jButton3" min="-2" pref="57" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="btlQuanlidanhmuc" min="-2" pref="57" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jButton5" min="-2" pref="57" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace pref="40" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -103,18 +106,29 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButton2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jButton1"/>
+            <Property name="text" type="java.lang.String" value="Chi Ti&#x1ebf;t &#x110;&#x1a1;n H&#xe0;ng"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton3">
           <Properties>
             <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n L&#xfd; S&#x1ea3;n Ph&#x1ea9;m"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton5">
           <Properties>
             <Property name="text" type="java.lang.String" value="B&#xe1;o C&#xe1;o Th&#x1ed1;ng K&#xea;"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btlQuanlidanhmuc">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n L&#xfd; Danh M&#x1ee5;c"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btlQuanlidanhmucActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

@@ -4,17 +4,30 @@
  */
 package Form;
 
+import Controller.Service;
+import Database.MyConnect;
+import java.sql.Connection;
+import java.util.Arrays;
+import java.util.List;
+import javax.swing.JTextField;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
 /**
  *
  * @author tuann
  */
 public class QuanliDanhmuc_Form extends javax.swing.JPanel {
 
+    private Service sv = new Service();
+    private MyConnect mc = new MyConnect();
+
     /**
      * Creates new form QuanliDanhmuc_Form
      */
     public QuanliDanhmuc_Form() {
         initComponents();
+        sv.Loadata(jTable1, "danhmuc");
     }
 
     /**
@@ -26,19 +39,244 @@ public class QuanliDanhmuc_Form extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTextField1 = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        txtMadanhmuc = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txtTendanhmuc = new javax.swing.JTextField();
+        btlThemDanhMuc = new javax.swing.JButton();
+        btlSuaDanhMuc = new javax.swing.JButton();
+        btlXoaDanhMuc = new javax.swing.JButton();
+
+        jTextField1.setBackground(new java.awt.Color(51, 204, 255));
+        jTextField1.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(0, 0, 204));
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField1.setText("Quản Lí Danh Mục");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Mã danh mục", "Tên danh mục"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        jLabel1.setText("Mã danh mục:");
+
+        jLabel2.setText("Tên danh mục:");
+
+        btlThemDanhMuc.setText("Thêm");
+        btlThemDanhMuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btlThemDanhMucActionPerformed(evt);
+            }
+        });
+
+        btlSuaDanhMuc.setText("Sửa");
+        btlSuaDanhMuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btlSuaDanhMucActionPerformed(evt);
+            }
+        });
+
+        btlXoaDanhMuc.setText("Xóa");
+        btlXoaDanhMuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btlXoaDanhMucActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 461, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtTendanhmuc, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtMadanhmuc, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btlThemDanhMuc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btlSuaDanhMuc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btlXoaDanhMuc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(69, 69, 69))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtMadanhmuc, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(btlThemDanhMuc)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTendanhmuc, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(btlSuaDanhMuc)
+                        .addGap(18, 18, 18)
+                        .addComponent(btlXoaDanhMuc)))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btlThemDanhMucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btlThemDanhMucActionPerformed
+        // TODO add your handling code here:
+        AddData();
+        sv.Loadata(jTable1, "danhmuc");
+    }//GEN-LAST:event_btlThemDanhMucActionPerformed
+
+    private void btlSuaDanhMucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btlSuaDanhMucActionPerformed
+        // TODO add your handling code here:
+        UpdateData();
+        sv.Loadata(jTable1, "danhmuc");
+        txtMadanhmuc.setText("");
+        txtTendanhmuc.setText("");
+    }//GEN-LAST:event_btlSuaDanhMucActionPerformed
+
+    private void btlXoaDanhMucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btlXoaDanhMucActionPerformed
+        // TODO add your handling code here:
+        Deletdata();
+        sv.Loadata(jTable1, "danhmuc");
+        txtMadanhmuc.setText("");
+        txtTendanhmuc.setText("");
+    }//GEN-LAST:event_btlXoaDanhMucActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        jTable1.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                JTextField[] txt = {txtMadanhmuc, txtTendanhmuc};
+                sv.PushDataTotxt(jTable1, txt);
+            }
+        });
+    }//GEN-LAST:event_jTable1MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btlSuaDanhMuc;
+    private javax.swing.JButton btlThemDanhMuc;
+    private javax.swing.JButton btlXoaDanhMuc;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField txtMadanhmuc;
+    private javax.swing.JTextField txtTendanhmuc;
     // End of variables declaration//GEN-END:variables
+
+    private void AddData() {
+        Connection conn = new MyConnect().getConnection();
+        String maDm = txtMadanhmuc.getText();
+        String tenDm = txtTendanhmuc.getText();
+        List<Object> obJ = Arrays.asList(maDm, tenDm);
+        List<Object> values = Arrays.asList("maDm", "tenDm");
+        for (Object item : values) {
+            if (item instanceof Integer) {
+                int intValue = (Integer) item;
+                // Xử lý số nguyên
+            } else if (item instanceof String) {
+                String stringValue = (String) item;
+                // Xử lý chuỗi
+            }
+        }
+
+        try {
+            if (sv.Addata("danhmuc", values, obJ)) {
+                System.out.println("Thêm thành công!");
+            } else {
+                System.out.println("Thêm không thành công!");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void Deletdata() {
+        mc.getConnection();
+        String key = txtMadanhmuc.getText();
+        try {
+            if (sv.DeleteData("danhmuc", "maDm", key)) {
+                System.out.println("Đã xóa thành công!");
+            } else {
+                System.out.println("Xóa không thành công!");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void UpdateData() {
+        Connection conn = new MyConnect().getConnection();
+        String maDm = txtMadanhmuc.getText();
+        String tenDm = txtTendanhmuc.getText();
+        List<Object> obJ = Arrays.asList(maDm, tenDm);
+        List<Object> values = Arrays.asList("maDm", "tenDm");
+        for (Object item : values) {
+            if (item instanceof Integer) {
+                int intValue = (Integer) item;
+                // Xử lý số nguyên
+            } else if (item instanceof String) {
+                String stringValue = (String) item;
+                // Xử lý chuỗi
+            }
+        }
+
+        try {
+            if (sv.UpdateData("danhmuc", values, obJ, maDm)) {
+                System.out.println("Sửa thành công!");
+            } else {
+                System.out.println("Sửa không thành công!");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }
