@@ -59,7 +59,7 @@ public class Loading_form extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(218, 218, 218)
                         .addComponent(jLabel2)))
-                .addContainerGap(158, Short.MAX_VALUE))
+                .addContainerGap(169, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(Percentext)
@@ -72,7 +72,7 @@ public class Loading_form extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 195, Short.MAX_VALUE)
                 .addComponent(Percentext)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Loadingbar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -111,7 +111,7 @@ public class Loading_form extends javax.swing.JFrame {
         }
         new Login_form().setVisible(true);
         load.dispose();
-   
+       
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

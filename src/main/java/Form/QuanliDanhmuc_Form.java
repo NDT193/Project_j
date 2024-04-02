@@ -9,9 +9,8 @@ import Database.MyConnect;
 import java.sql.Connection;
 import java.util.Arrays;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 
 /**
  *
@@ -114,23 +113,28 @@ public class QuanliDanhmuc_Form extends javax.swing.JPanel {
                     .addComponent(jTextField1)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 461, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btlSuaDanhMuc, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtTendanhmuc, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtMadanhmuc, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btlThemDanhMuc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btlSuaDanhMuc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btlXoaDanhMuc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(69, 69, 69))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtTendanhmuc, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtMadanhmuc, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(38, 38, 38)
+                                .addComponent(btlXoaDanhMuc, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btlThemDanhMuc)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,25 +143,21 @@ public class QuanliDanhmuc_Form extends javax.swing.JPanel {
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtMadanhmuc, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(btlThemDanhMuc)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                            .addComponent(txtMadanhmuc, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(35, 35, 35)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtTendanhmuc, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
+                        .addComponent(btlThemDanhMuc)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btlSuaDanhMuc)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btlXoaDanhMuc)))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
@@ -187,13 +187,8 @@ public class QuanliDanhmuc_Form extends javax.swing.JPanel {
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
-        jTable1.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-            @Override
-            public void valueChanged(ListSelectionEvent e) {
-                JTextField[] txt = {txtMadanhmuc, txtTendanhmuc};
-                sv.PushDataTotxt(jTable1, txt);
-            }
-        });
+        JTextField[] txt = {txtMadanhmuc, txtTendanhmuc};
+        sv.PushDataTotxt(jTable1, txt);
     }//GEN-LAST:event_jTable1MouseClicked
 
 
@@ -211,31 +206,38 @@ public class QuanliDanhmuc_Form extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void AddData() {
-        Connection conn = new MyConnect().getConnection();
+        mc.getConnection();
         String maDm = txtMadanhmuc.getText();
         String tenDm = txtTendanhmuc.getText();
-        List<Object> obJ = Arrays.asList(maDm, tenDm);
-        List<Object> values = Arrays.asList("maDm", "tenDm");
-        for (Object item : values) {
-            if (item instanceof Integer) {
-                int intValue = (Integer) item;
-                // Xử lý số nguyên
-            } else if (item instanceof String) {
-                String stringValue = (String) item;
-                // Xử lý chuỗi
+
+        if (txtMadanhmuc.getText().equals("") || txtTendanhmuc.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Vui lòng nhập đủ dữ liệu!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+        } else if (sv.isPrimaryKeyDuplicate("danhmuc", "maDm", maDm)) {
+            JOptionPane.showMessageDialog(null, "Dữ liệu đã tồn tại", "Lỗi", JOptionPane.ERROR_MESSAGE);
+        } else {
+            List<Object> obJ = Arrays.asList(maDm, tenDm);
+            List<Object> values = Arrays.asList("maDm", "tenDm");
+            for (Object item : values) {
+                if (item instanceof Integer) {
+                    int intValue = (Integer) item;
+                    // Xử lý số nguyên
+                } else if (item instanceof String) {
+                    String stringValue = (String) item;
+                    // Xử lý chuỗi
+                }
+            }
+
+            try {
+                if (sv.Addata("danhmuc", values, obJ)) {
+                    System.out.println("Thêm thành công!");
+                } else {
+                    System.out.println("Thêm không thành công!");
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
-
-        try {
-            if (sv.Addata("danhmuc", values, obJ)) {
-                System.out.println("Thêm thành công!");
-            } else {
-                System.out.println("Thêm không thành công!");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
     }
 
     private void Deletdata() {
@@ -269,7 +271,7 @@ public class QuanliDanhmuc_Form extends javax.swing.JPanel {
         }
 
         try {
-            if (sv.UpdateData("danhmuc", values, obJ, maDm)) {
+            if (sv.UpdateData("danhmuc", "maDm", values, obJ, maDm)) {
                 System.out.println("Sửa thành công!");
             } else {
                 System.out.println("Sửa không thành công!");

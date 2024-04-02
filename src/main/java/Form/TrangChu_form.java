@@ -5,21 +5,28 @@
 package Form;
 
 import Controller.Service;
+import env.Env;
+import javax.swing.JPanel;
 
 /**
  *
  * @author tuann
  */
 public class TrangChu_form extends javax.swing.JFrame {
+
     /**
      * Creates new form TrangChu_form
      */
-    
     private Service sv = new Service();
+
     public TrangChu_form() {
         initComponents();
-       
-        
+
+        if (Env.role.equals("khach")) {
+            btlQuanlisanpham.setEnabled(false);
+            btlQuanlidanhmuc.setEnabled(false);
+            btlBaocaothongke.setEnabled(false);
+        }
     }
 
     /**
@@ -34,40 +41,97 @@ public class TrangChu_form extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btlChitietdonhang = new javax.swing.JButton();
+        btlQuanlisanpham = new javax.swing.JButton();
+        btlBaocaothongke = new javax.swing.JButton();
         btlQuanlidanhmuc = new javax.swing.JButton();
+        btl_TTtaikhoan = new javax.swing.JButton();
+        btl_TTtaikhoan1 = new javax.swing.JButton();
+        btl_TTtaikhoan2 = new javax.swing.JButton();
         swPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTextField1.setBackground(new java.awt.Color(0, 153, 255));
+        jPanel1.setBackground(new java.awt.Color(153, 153, 255));
+
+        jTextField1.setBackground(new java.awt.Color(0, 204, 255));
         jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jTextField1.setText("Cửa Hàng Linh Kiện Điện Tử");
 
+        jButton1.setBackground(new java.awt.Color(0, 204, 255));
+        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\tuann\\OneDrive\\Tài liệu\\Baitap\\năm 3 kỳ 3\\Java nâng cao\\Src\\delivery-box.png")); // NOI18N
         jButton1.setText("Thông tin sản phẩm");
+        jButton1.setBorderPainted(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Chi Tiết Đơn Hàng");
-
-        jButton3.setText("Quản Lý Sản Phẩm");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btlChitietdonhang.setBackground(new java.awt.Color(0, 204, 255));
+        btlChitietdonhang.setIcon(new javax.swing.ImageIcon("C:\\Users\\tuann\\OneDrive\\Tài liệu\\Baitap\\năm 3 kỳ 3\\Java nâng cao\\Src\\shopping-list.png")); // NOI18N
+        btlChitietdonhang.setText("Chi Tiết Đơn Hàng");
+        btlChitietdonhang.setBorderPainted(false);
+        btlChitietdonhang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btlChitietdonhangActionPerformed(evt);
             }
         });
 
-        jButton5.setText("Báo Cáo Thống Kê");
+        btlQuanlisanpham.setBackground(new java.awt.Color(0, 204, 255));
+        btlQuanlisanpham.setIcon(new javax.swing.ImageIcon("C:\\Users\\tuann\\OneDrive\\Tài liệu\\Baitap\\năm 3 kỳ 3\\Java nâng cao\\Src\\box.png")); // NOI18N
+        btlQuanlisanpham.setText("Quản Lý Sản Phẩm");
+        btlQuanlisanpham.setBorderPainted(false);
+        btlQuanlisanpham.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btlQuanlisanphamActionPerformed(evt);
+            }
+        });
 
+        btlBaocaothongke.setBackground(new java.awt.Color(0, 204, 255));
+        btlBaocaothongke.setIcon(new javax.swing.ImageIcon("C:\\Users\\tuann\\OneDrive\\Tài liệu\\Baitap\\năm 3 kỳ 3\\Java nâng cao\\Src\\accounting.png")); // NOI18N
+        btlBaocaothongke.setText("Báo Cáo Thống Kê");
+        btlBaocaothongke.setBorderPainted(false);
+        btlBaocaothongke.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btlBaocaothongkeActionPerformed(evt);
+            }
+        });
+
+        btlQuanlidanhmuc.setBackground(new java.awt.Color(0, 204, 255));
+        btlQuanlidanhmuc.setIcon(new javax.swing.ImageIcon("C:\\Users\\tuann\\OneDrive\\Tài liệu\\Baitap\\năm 3 kỳ 3\\Java nâng cao\\Src\\timeline.png")); // NOI18N
         btlQuanlidanhmuc.setText("Quản Lý Danh Mục");
+        btlQuanlidanhmuc.setBorderPainted(false);
         btlQuanlidanhmuc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btlQuanlidanhmucActionPerformed(evt);
+            }
+        });
+
+        btl_TTtaikhoan.setBackground(new java.awt.Color(0, 204, 255));
+        btl_TTtaikhoan.setIcon(new javax.swing.ImageIcon("C:\\Users\\tuann\\OneDrive\\Tài liệu\\Baitap\\năm 3 kỳ 3\\Java nâng cao\\Src\\user.png")); // NOI18N
+        btl_TTtaikhoan.setBorderPainted(false);
+        btl_TTtaikhoan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btl_TTtaikhoanActionPerformed(evt);
+            }
+        });
+
+        btl_TTtaikhoan1.setBackground(new java.awt.Color(0, 204, 255));
+        btl_TTtaikhoan1.setIcon(new javax.swing.ImageIcon("C:\\Users\\tuann\\OneDrive\\Tài liệu\\Baitap\\năm 3 kỳ 3\\Java nâng cao\\Src\\cart.png")); // NOI18N
+        btl_TTtaikhoan1.setBorderPainted(false);
+        btl_TTtaikhoan1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btl_TTtaikhoan1ActionPerformed(evt);
+            }
+        });
+
+        btl_TTtaikhoan2.setBackground(new java.awt.Color(0, 204, 255));
+        btl_TTtaikhoan2.setIcon(new javax.swing.ImageIcon("C:\\Users\\tuann\\OneDrive\\Tài liệu\\Baitap\\năm 3 kỳ 3\\Java nâng cao\\Src\\logout.png")); // NOI18N
+        btl_TTtaikhoan2.setBorderPainted(false);
+        btl_TTtaikhoan2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btl_TTtaikhoan2ActionPerformed(evt);
             }
         });
 
@@ -75,15 +139,25 @@ public class TrangChu_form extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jTextField1)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btlQuanlidanhmuc, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btlChitietdonhang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btlQuanlisanpham, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btlQuanlidanhmuc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btlBaocaothongke, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(btl_TTtaikhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btl_TTtaikhoan1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btl_TTtaikhoan2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,14 +167,19 @@ public class TrangChu_form extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btlChitietdonhang, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btlQuanlisanpham, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btlQuanlidanhmuc, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addComponent(btlBaocaothongke, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btl_TTtaikhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btl_TTtaikhoan1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btl_TTtaikhoan2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         swPanel.setLayout(new java.awt.BorderLayout());
@@ -112,8 +191,8 @@ public class TrangChu_form extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                .addComponent(swPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 638, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(swPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -138,15 +217,45 @@ public class TrangChu_form extends javax.swing.JFrame {
 
     private void btlQuanlidanhmucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btlQuanlidanhmucActionPerformed
         // TODO add your handling code here:
-        QuanliDanhmuc_Form dm =new QuanliDanhmuc_Form();
+        QuanliDanhmuc_Form dm = new QuanliDanhmuc_Form();
         sv.Switch(swPanel, dm);
     }//GEN-LAST:event_btlQuanlidanhmucActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btlQuanlisanphamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btlQuanlisanphamActionPerformed
         // TODO add your handling code here:
         QuanliSanpham_panel qlsp = new QuanliSanpham_panel();
-         sv.Switch(swPanel, qlsp);
-    }//GEN-LAST:event_jButton3ActionPerformed
+        sv.Switch(swPanel, qlsp);
+    }//GEN-LAST:event_btlQuanlisanphamActionPerformed
+
+    private void btlChitietdonhangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btlChitietdonhangActionPerformed
+        // TODO add your handling code here:   
+        Chitietdonhang_form chitietdonhang = new Chitietdonhang_form();
+        sv.Switch(swPanel, chitietdonhang);
+    }//GEN-LAST:event_btlChitietdonhangActionPerformed
+
+    private void btlBaocaothongkeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btlBaocaothongkeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btlBaocaothongkeActionPerformed
+
+    private void btl_TTtaikhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btl_TTtaikhoanActionPerformed
+        // TODO add your handling code here:
+        Thongtintaikhoan_panel tt = new Thongtintaikhoan_panel();
+        sv.Switch(swPanel, tt);
+    }//GEN-LAST:event_btl_TTtaikhoanActionPerformed
+
+    private void btl_TTtaikhoan2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btl_TTtaikhoan2ActionPerformed
+        // TODO add your handling code here:
+        Login_form log = new Login_form();
+        log.setVisible(true);
+        this.setVisible(false);
+        Env.idKhach = "";
+    }//GEN-LAST:event_btl_TTtaikhoan2ActionPerformed
+
+    private void btl_TTtaikhoan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btl_TTtaikhoan1ActionPerformed
+        // TODO add your handling code here:
+        Giohang_form giohang = new Giohang_form();
+        sv.Switch(swPanel, giohang);
+    }//GEN-LAST:event_btl_TTtaikhoan1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -183,16 +292,19 @@ public class TrangChu_form extends javax.swing.JFrame {
         });
     }
 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btlBaocaothongke;
+    private javax.swing.JButton btlChitietdonhang;
     private javax.swing.JButton btlQuanlidanhmuc;
+    private javax.swing.JButton btlQuanlisanpham;
+    private javax.swing.JButton btl_TTtaikhoan;
+    private javax.swing.JButton btl_TTtaikhoan1;
+    private javax.swing.JButton btl_TTtaikhoan2;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel swPanel;
     // End of variables declaration//GEN-END:variables
-
 
 }
