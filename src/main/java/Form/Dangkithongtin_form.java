@@ -283,6 +283,8 @@ public class Dangkithongtin_form extends javax.swing.JFrame {
         mc.getConnection();
 
         String maKh = txtCCCD.getText();
+        Env.idKhach= txtCCCD.getText();
+        Env.role="khach";
 
         String tenKh = txtTen.getText();
         String sdt = txtSDT.getText();

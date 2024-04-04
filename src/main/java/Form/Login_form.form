@@ -45,6 +45,12 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="btlDangkithongtin">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="ff" red="99" type="rgb"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="2" name="C:\Users\tuann\OneDrive\Ta&#x300;i li&#xea;&#x323;u\Baitap\n&#x103;m 3 k&#x1ef3; 3\Java n&#xe2;ng cao\Src\list.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="&#x110;i&#x1ec1;n th&#xf4;ng tin "/>
           </Properties>
           <Events>
@@ -52,7 +58,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="20" y="230" width="150" height="40"/>
+              <AbsoluteConstraints x="20" y="240" width="160" height="40"/>
             </Constraint>
           </Constraints>
         </Component>

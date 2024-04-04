@@ -5,9 +5,13 @@
 package Controller;
 
 import Database.MyConnect;
+import env.Env;
 import java.awt.BorderLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,10 +19,10 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -193,7 +197,7 @@ public class Service {
             }
 
         } catch (Exception e) {
-           e.printStackTrace();
+            e.printStackTrace();
         }
     }
 
@@ -297,7 +301,7 @@ public class Service {
     //----------------SwitchPanel------
     public void Switch(JPanel panel1, JPanel panel2) {
         panel1.removeAll();
-        panel1.add(panel2,BorderLayout.CENTER);
+        panel1.add(panel2, BorderLayout.CENTER);
         panel1.revalidate();
         panel1.repaint();
     }
@@ -327,19 +331,20 @@ public class Service {
         }
         return isDuplicate;
     }
+
     //--------Login------
-    public boolean Login(String tableName,String user , String pass,String role) {
+    public boolean Login(String tableName, String user, String pass, String role) {
         boolean success = false;
 
         ResultSet resultSet = null;
         Connection conn = new MyConnect().getConnection();
         try {
             Statement st = conn.createStatement();
-            StringBuilder sql = new StringBuilder("SELECT COUNT(*) FROM " + tableName 
-               + " where  username = '"+user+"' and password = '" +pass+ "' and role = '" + role + "'"  );
+            String sql = "SELECT COUNT(*) FROM " + tableName
+                    + " where  username = '" + user + "' and password = '" + pass + "' and role = '" + role + "'";
 
-             resultSet = st.executeQuery(sql.toString());
-              if (resultSet.next()) {
+            resultSet = st.executeQuery(sql);
+            if (resultSet.next()) {
                 int count = resultSet.getInt(1);
                 success = (count > 0);
             }
@@ -351,6 +356,127 @@ public class Service {
         return success;
 
     }
+    //------Xuất file excel
+     public void Export2Excel(JTable table, File file) {
+        try {
+            FileWriter out = new FileWriter(file);
+
+            // Xuất nội dung bảng ra file excel.
+            for (int i = 0; i < table.getRowCount(); i++) {
+                for (int j = 0; j < table.getColumnCount(); j++) {
+                    out.write(table.getValueAt(i, j).toString() + "\t");
+                }
+                out.write("\n"); // Xuống dòng mới trong file excel.
+            }
+
+            out.close();
+            System.out.println("Ghi ra file: " + file);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+    }
+
+    //------Sự kiện cho giỏ hàng------
+    //------Đẩy dữ liệu từ database lên giỏ hàng------
+    public void FillData2GioHang(JTable JtableName, List masp, List soluong, List gia) {
+        try {
+            DefaultTableModel model = (DefaultTableModel) JtableName.getModel();
+            model.setRowCount(0);
+            for (int i = 0; i < Env.maSp.size(); i++) {
+                Object[] row = new Object[model.getColumnCount()];
+                row[0] = masp.get(i);
+                row[1] = soluong.get(i);
+                row[2] = gia.get(i);
+                model.addRow(row);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    //---- Chưa sửa xong
+    public static void convertTableToLists() {
+        try {
+            // Kết nối đến cơ sở dữ liệu
+            Connection conn = new MyConnect().getConnection();
+
+            // Truy vấn dữ liệu từ bảng GioHang
+            String query = "SELECT maSp, soLuong, giaBan FROM giohang Where maKh = '" + Env.idKhach + "'";
+            Statement statement = conn.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+
+            // Lặp qua các dòng kết quả và thêm dữ liệu vào danh sách tương ứng
+            while (resultSet.next()) {
+                String maSp = resultSet.getString("maSp");
+                String soLuong = resultSet.getString("soLuong");
+                String gia = resultSet.getString("giaBan");
+                List<String> MASP = convertToList(maSp);
+                List<String> SOLUONG = convertToList(soLuong);
+                List<String> GIA = convertToList(gia);
+
+                Env.maSp = MASP;
+                Env.soLuong = SOLUONG;
+                Env.gia = GIA;
+
+            }
+
+            // Đóng kết nối và tài nguyên
+            resultSet.close();
+            statement.close();
+            conn.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    //---- Cắt chuỗi------
+    private static String splitString(String input) {
+
+        String[] parts = input.split(",");
+        if (parts.length > 0) {
+            return parts[0];
+        }
+
+        // If no splitting is needed, you can return the input as is
+        return input;
+    }
+    //---- chua sua xong
+    public boolean addProduct(String tableName, String value) {
+        boolean success = false;
+
+        try {
+            Statement st = conn.createStatement();
+            String sql = "INSERT INTO " + tableName + "(maKh) Values('" + value + "')";
+            st.executeUpdate(sql);
+            success = true; // Gán giá trị true cho biến success khi thêm thành công
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return success;
+
+    }
     
+    //--------Chuyển đổi từ mảng về String
+    public String arrayToString(List<String> list) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < list.size(); i++) {
+            sb.append(list.get(i));
+            if (i < list.size() - 1) {
+                sb.append(","); // Thêm dấu phẩy và khoảng trắng giữa các phần tử
+            }
+        }
+        return sb.toString();
+    }
     
+    //--------
+    public static List<String> convertToList(String str) {
+        String[] strArray = str.split(",");
+
+        List<String> list = new ArrayList<>(Arrays.asList(strArray));
+
+        return list;
+    }
+
 }

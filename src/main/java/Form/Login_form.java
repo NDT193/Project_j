@@ -76,13 +76,15 @@ public class Login_form extends javax.swing.JFrame {
 
         CoverPanelCDK_Login.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btlDangkithongtin.setBackground(new java.awt.Color(153, 255, 204));
+        btlDangkithongtin.setIcon(new javax.swing.ImageIcon("C:\\Users\\tuann\\OneDrive\\Tài liệu\\Baitap\\năm 3 kỳ 3\\Java nâng cao\\Src\\list.png")); // NOI18N
         btlDangkithongtin.setText("Điền thông tin ");
         btlDangkithongtin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btlDangkithongtinActionPerformed(evt);
             }
         });
-        CoverPanelCDK_Login.add(btlDangkithongtin, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 150, 40));
+        CoverPanelCDK_Login.add(btlDangkithongtin, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 160, 40));
 
         btn_ChangetoDK.setIcon(new javax.swing.ImageIcon("C:\\Users\\tuann\\OneDrive\\Tài liệu\\Baitap\\năm 3 kỳ 3\\Java nâng cao\\Src\\btn_DangKy.png")); // NOI18N
         btn_ChangetoDK.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);

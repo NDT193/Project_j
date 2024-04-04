@@ -4,6 +4,9 @@
  */
 package env;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author tuann
@@ -11,4 +14,7 @@ package env;
 public class Env {
     public static String role =  "khach";
     public static String idKhach = "";
+    public static List<String> maSp = new ArrayList<>();
+    public static List<String> soLuong= new ArrayList<>();
+    public static List<String> gia= new ArrayList<>();
 }

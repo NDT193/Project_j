@@ -229,12 +229,15 @@ public class TrangChu_form extends javax.swing.JFrame {
 
     private void btlChitietdonhangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btlChitietdonhangActionPerformed
         // TODO add your handling code here:   
-        Chitietdonhang_form chitietdonhang = new Chitietdonhang_form();
+        Chitietdonhang_panel chitietdonhang = new Chitietdonhang_panel();
         sv.Switch(swPanel, chitietdonhang);
     }//GEN-LAST:event_btlChitietdonhangActionPerformed
 
     private void btlBaocaothongkeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btlBaocaothongkeActionPerformed
         // TODO add your handling code here:
+        Baocaothongke_panel baocao = new Baocaothongke_panel();
+        sv.Switch(swPanel, baocao);
+
     }//GEN-LAST:event_btlBaocaothongkeActionPerformed
 
     private void btl_TTtaikhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btl_TTtaikhoanActionPerformed
@@ -249,6 +252,7 @@ public class TrangChu_form extends javax.swing.JFrame {
         log.setVisible(true);
         this.setVisible(false);
         Env.idKhach = "";
+        Env.role= "khach";        
     }//GEN-LAST:event_btl_TTtaikhoan2ActionPerformed
 
     private void btl_TTtaikhoan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btl_TTtaikhoan1ActionPerformed
