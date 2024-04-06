@@ -60,17 +60,17 @@ public class Baocaothongke_panel extends javax.swing.JPanel {
 
         tableThongke.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Mã đơn", "Mã khách hàng", "Tên sản phẩm", "Giá bán", "Số lượng", "Ngày bán"
+                "Mã đơn", "Mã khách hàng", "Số điện thoại", "Địa chỉ", "Tên sản phẩm", "Giá bán", "Số lượng", "Ngày bán"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {

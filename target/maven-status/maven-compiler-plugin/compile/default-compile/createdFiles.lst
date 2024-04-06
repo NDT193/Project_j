@@ -1,10 +1,12 @@
 Database\MyConnect.class
 Form\TrangChu_form$7.class
 Form\Login_form$6.class
+Form\Sanpham_panel$4.class
 Form\Chitietdonhang_panel$1.class
 Form\Thongtintaikhoan_panel.class
 Form\TrangChu_form$4.class
 Controller\Service.class
+Form\Giohang_form$2.class
 Form\Login_form$3.class
 Form\Sanpham_panel$1.class
 Form\Baocaothongke_panel.class
@@ -13,6 +15,7 @@ Form\QuanliSanpham_panel$3.class
 Form\QuanliSanpham_panel.class
 Form\Login_form$7.class
 env\Env.class
+Form\Sanpham_panel$5.class
 Form\Dangkithongtin_form$1.class
 Form\TrangChu_form$3.class
 Form\QuanliSanpham_panel$1.class
@@ -36,6 +39,7 @@ Form\QuanliSanpham_panel$5.class
 Form\Baocaothongke_panel$1.class
 Form\TrangChu_form$5.class
 Form\Sanpham_panel$3.class
+Form\Giohang_form$4.class
 Form\Sanpham_panel.class
 Controller\Service$1.class
 Form\QuanliDanhmuc_Form.class
@@ -45,8 +49,10 @@ Form\QuanliDanhmuc_Form$1.class
 Form\TrangChu_form$1.class
 Form\Dangkithongtin_form$3.class
 Form\Login_form$2.class
+Form\Login_form$9.class
 Form\Login_form$5.class
 Form\Dangkithongtin_form.class
+Form\Giohang_form$3.class
 Form\Loading_form.class
 Form\QuanliDanhmuc_Form$4.class
 Form\Login_form.class

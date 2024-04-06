@@ -14,6 +14,8 @@ import Database.MyConnect;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import env.Env;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  *
@@ -21,6 +23,7 @@ import env.Env;
  */
 public class Login_form extends javax.swing.JFrame {
 
+    private MyConnect mc = new MyConnect();
     private Service sv = new Service();
 
     /**
@@ -28,7 +31,7 @@ public class Login_form extends javax.swing.JFrame {
      */
     public Login_form() {
         initComponents();
-   
+
     }
 
     public void Start() {
@@ -66,6 +69,7 @@ public class Login_form extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txt_Password = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         Panel_bg_login = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -185,6 +189,16 @@ public class Login_form extends javax.swing.JFrame {
         jLabel3.setText("ĐĂNG KÝ");
         panel_DangKy.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 340, 60));
 
+        jButton2.setBackground(new java.awt.Color(51, 255, 51));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton2.setText("Đăng kí");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        panel_DangKy.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 110, 30));
+
         getContentPane().add(panel_DangKy, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 340, 360));
 
         Panel_bg_login.setBackground(new java.awt.Color(204, 255, 255));
@@ -263,7 +277,7 @@ public class Login_form extends javax.swing.JFrame {
                     CoverPanelCDK_Login.setLocation(XcoverDangnhap, CoverPanelCDK_Login.getY());
                 }
 
-                if (Endtime >= 600) {
+                if (Endtime >= 10000) {
                     ((Timer) e.getSource()).stop();
                 }
 //                if(Endtime>600){
@@ -286,8 +300,9 @@ public class Login_form extends javax.swing.JFrame {
             } else if (sv.Login("taikhoan", user, pass, Env.role)) {
                 TakeIdkhach();
                 System.out.println("Đăng nhập thành công!");
+                sv.convertTableToLists();
                 TrangChu_form trangchu = new TrangChu_form();
-                trangchu.setVisible(true);               
+                trangchu.setVisible(true);
                 setVisible(false);
             } else {
                 JOptionPane.showMessageDialog(this, "Sai tài khoản hoặc mật khẩu");
@@ -296,7 +311,7 @@ public class Login_form extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-            
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void rbtlSetroleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbtlSetroleMouseClicked
@@ -313,8 +328,13 @@ public class Login_form extends javax.swing.JFrame {
         Dangkithongtin_form dangkiTT = new Dangkithongtin_form();
         dangkiTT.setVisible(true);
         this.setVisible(false);
-        
+
     }//GEN-LAST:event_btlDangkithongtinActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        Addacuont();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -337,6 +357,7 @@ public class Login_form extends javax.swing.JFrame {
     private javax.swing.JLabel btl_ChangetoDN;
     private javax.swing.JLabel btn_ChangetoDK;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -359,19 +380,51 @@ public class Login_form extends javax.swing.JFrame {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         String user = txtTaikhoan.getText();
-        
+
         try {
             String query = "SELECT maKh FROM taikhoan WHERE username = ? ";
             statement = conn.prepareStatement(query);
             statement.setString(1, user);
-            
+
             resultSet = statement.executeQuery();
             if (resultSet.next()) {
-               Env.idKhach = resultSet.getString("maKh");      
+                Env.idKhach = resultSet.getString("maKh");
             }
-            
+
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    private void Addacuont() {
+        Connection conn = new MyConnect().getConnection();
+        String user = txt_Username.getText();
+        String pass = new String(txt_Password.getPassword());
+        String role = "khach";
+
+        List<Object> objectList = Arrays.asList(user, pass, role, Env.idKhach);
+        List<Object> columnValues = Arrays.asList("username", "password", "role", "maKh");
+
+        if (user.isEmpty() || pass.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập đủ thông tin");
+        }
+        else if (sv.isPrimaryKeyDuplicate("taikhoan", "username", user))
+        {
+            JOptionPane.showMessageDialog(this, "Tài khoản đã tồn tại");
+        }else{
+            try {
+                if(sv.Addata("taikhoan", columnValues, objectList))
+                {
+                JOptionPane.showMessageDialog(this, "Đăng kí tài khoản thành công");
+                sv.addProduct("giohang", Env.idKhach);
+                
+                }else{
+                JOptionPane.showMessageDialog(this, "Đăng kí tài khoản không thành công");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        
         }
     }
 

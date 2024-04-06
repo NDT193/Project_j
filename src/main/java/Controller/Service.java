@@ -356,8 +356,9 @@ public class Service {
         return success;
 
     }
+
     //------Xuất file excel
-     public void Export2Excel(JTable table, File file) {
+    public void Export2Excel(JTable table, File file) {
         try {
             FileWriter out = new FileWriter(file);
 
@@ -380,14 +381,34 @@ public class Service {
     //------Sự kiện cho giỏ hàng------
     //------Đẩy dữ liệu từ database lên giỏ hàng------
     public void FillData2GioHang(JTable JtableName, List masp, List soluong, List gia) {
+        List<String> listTensp = new ArrayList<>();
+        
         try {
+            Connection conn = new MyConnect().getConnection();
+            Statement st = conn.createStatement();
+            ResultSet resultSet = null;
+            
+            for(int i=0; i<masp.size(); i++) {
+                String sql = "SELECT tenSp FROM sanpham where maSp = '" + masp.get(i) + "'";
+                resultSet = st.executeQuery(sql);
+                
+                if(resultSet.next()){
+                    listTensp.add(resultSet.getString("tenSp"));
+                }                
+            }
+            
+            st.close();
+            resultSet.close();
+            conn.close();
+            
             DefaultTableModel model = (DefaultTableModel) JtableName.getModel();
             model.setRowCount(0);
             for (int i = 0; i < Env.maSp.size(); i++) {
                 Object[] row = new Object[model.getColumnCount()];
                 row[0] = masp.get(i);
-                row[1] = soluong.get(i);
-                row[2] = gia.get(i);
+                row[1] = listTensp.get(i);
+                row[2] = soluong.get(i);
+                row[3] = gia.get(i);
                 model.addRow(row);
             }
         } catch (Exception e) {
@@ -395,7 +416,7 @@ public class Service {
         }
     }
 
-    //---- Chưa sửa xong
+    //---- 
     public static void convertTableToLists() {
         try {
             // Kết nối đến cơ sở dữ liệu
@@ -430,18 +451,16 @@ public class Service {
         }
     }
 
-    //---- Cắt chuỗi------
-    private static String splitString(String input) {
-
+    //----------
+    public String splitString(String input, int i) {
         String[] parts = input.split(",");
-        if (parts.length > 0) {
-            return parts[0];
+        if (i >= 0 && i < parts.length) {
+            return parts[i];
         }
-
-        // If no splitting is needed, you can return the input as is
         return input;
     }
-    //---- chua sua xong
+
+    //------
     public boolean addProduct(String tableName, String value) {
         boolean success = false;
 
@@ -457,7 +476,7 @@ public class Service {
         return success;
 
     }
-    
+
     //--------Chuyển đổi từ mảng về String
     public String arrayToString(List<String> list) {
         StringBuilder sb = new StringBuilder();
@@ -469,14 +488,38 @@ public class Service {
         }
         return sb.toString();
     }
-    
-    //--------
-    public static List<String> convertToList(String str) {
-        String[] strArray = str.split(",");
 
+    //--------
+    private static List<String> convertToList(String str) {
+        String[] strArray = str.split(",");
         List<String> list = new ArrayList<>(Arrays.asList(strArray));
 
         return list;
+    }
+
+    public boolean isProductduplicate(String conditions){
+        boolean success = false;
+        Connection conn = new MyConnect().getConnection();
+        PreparedStatement stmt = null;
+        ResultSet resultSet = null;
+ 
+        try {
+            conn = new MyConnect().getConnection();
+        String sql = "SELECT COUNT(maSp) FROM giohang WHERE maSp LIKE ? AND maKh = ?";
+        stmt = conn.prepareStatement(sql);
+        stmt.setString(1, "%" + conditions + "%");
+        stmt.setString(2, Env.idKhach);
+        resultSet = stmt.executeQuery();
+
+        if (resultSet.next()) {
+            int count = resultSet.getInt(1);
+            success = (count > 0);
+        }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return success;
     }
 
 }

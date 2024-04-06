@@ -46,7 +46,7 @@ public class TrangChu_form extends javax.swing.JFrame {
         btlBaocaothongke = new javax.swing.JButton();
         btlQuanlidanhmuc = new javax.swing.JButton();
         btl_TTtaikhoan = new javax.swing.JButton();
-        btl_TTtaikhoan1 = new javax.swing.JButton();
+        btl_Giohang = new javax.swing.JButton();
         btl_TTtaikhoan2 = new javax.swing.JButton();
         swPanel = new javax.swing.JPanel();
 
@@ -56,6 +56,7 @@ public class TrangChu_form extends javax.swing.JFrame {
 
         jTextField1.setBackground(new java.awt.Color(0, 204, 255));
         jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField1.setText("Cửa Hàng Linh Kiện Điện Tử");
 
         jButton1.setBackground(new java.awt.Color(0, 204, 255));
@@ -117,12 +118,12 @@ public class TrangChu_form extends javax.swing.JFrame {
             }
         });
 
-        btl_TTtaikhoan1.setBackground(new java.awt.Color(0, 204, 255));
-        btl_TTtaikhoan1.setIcon(new javax.swing.ImageIcon("C:\\Users\\tuann\\OneDrive\\Tài liệu\\Baitap\\năm 3 kỳ 3\\Java nâng cao\\Src\\cart.png")); // NOI18N
-        btl_TTtaikhoan1.setBorderPainted(false);
-        btl_TTtaikhoan1.addActionListener(new java.awt.event.ActionListener() {
+        btl_Giohang.setBackground(new java.awt.Color(0, 204, 255));
+        btl_Giohang.setIcon(new javax.swing.ImageIcon("C:\\Users\\tuann\\OneDrive\\Tài liệu\\Baitap\\năm 3 kỳ 3\\Java nâng cao\\Src\\cart.png")); // NOI18N
+        btl_Giohang.setBorderPainted(false);
+        btl_Giohang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btl_TTtaikhoan1ActionPerformed(evt);
+                btl_GiohangActionPerformed(evt);
             }
         });
 
@@ -141,30 +142,29 @@ public class TrangChu_form extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jTextField1)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btlChitietdonhang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btlQuanlisanpham, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btlQuanlidanhmuc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btlBaocaothongke, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(btl_TTtaikhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btl_TTtaikhoan1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btl_TTtaikhoan2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(22, 22, 22)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btlChitietdonhang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btlQuanlisanpham, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btlQuanlidanhmuc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btlBaocaothongke, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(21, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btl_TTtaikhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btl_Giohang, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btl_TTtaikhoan2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btlChitietdonhang, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -172,14 +172,14 @@ public class TrangChu_form extends javax.swing.JFrame {
                 .addComponent(btlQuanlisanpham, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btlQuanlidanhmuc, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(26, 26, 26)
                 .addComponent(btlBaocaothongke, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btl_TTtaikhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btl_TTtaikhoan1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btl_Giohang, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btl_TTtaikhoan2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addGap(30, 30, 30))
         );
 
         swPanel.setLayout(new java.awt.BorderLayout());
@@ -192,7 +192,7 @@ public class TrangChu_form extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(swPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)
+                .addComponent(swPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 669, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -255,11 +255,11 @@ public class TrangChu_form extends javax.swing.JFrame {
         Env.role= "khach";        
     }//GEN-LAST:event_btl_TTtaikhoan2ActionPerformed
 
-    private void btl_TTtaikhoan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btl_TTtaikhoan1ActionPerformed
+    private void btl_GiohangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btl_GiohangActionPerformed
         // TODO add your handling code here:
         Giohang_form giohang = new Giohang_form();
         sv.Switch(swPanel, giohang);
-    }//GEN-LAST:event_btl_TTtaikhoan1ActionPerformed
+    }//GEN-LAST:event_btl_GiohangActionPerformed
 
     /**
      * @param args the command line arguments
@@ -302,8 +302,8 @@ public class TrangChu_form extends javax.swing.JFrame {
     private javax.swing.JButton btlChitietdonhang;
     private javax.swing.JButton btlQuanlidanhmuc;
     private javax.swing.JButton btlQuanlisanpham;
+    private javax.swing.JButton btl_Giohang;
     private javax.swing.JButton btl_TTtaikhoan;
-    private javax.swing.JButton btl_TTtaikhoan1;
     private javax.swing.JButton btl_TTtaikhoan2;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
