@@ -252,7 +252,10 @@ public class TrangChu_form extends javax.swing.JFrame {
         log.setVisible(true);
         this.setVisible(false);
         Env.idKhach = "";
-        Env.role= "khach";        
+        Env.role= "khach"; 
+        Env.maSp.removeAll(Env.maSp);
+        Env.soLuong.removeAll( Env.soLuong);
+        Env.gia.removeAll( Env.gia);
     }//GEN-LAST:event_btl_TTtaikhoan2ActionPerformed
 
     private void btl_GiohangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btl_GiohangActionPerformed

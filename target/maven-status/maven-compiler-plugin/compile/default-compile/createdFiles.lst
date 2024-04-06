@@ -15,6 +15,7 @@ Form\QuanliSanpham_panel$3.class
 Form\QuanliSanpham_panel.class
 Form\Login_form$7.class
 env\Env.class
+Form\Giohang_form$5.class
 Form\Sanpham_panel$5.class
 Form\Dangkithongtin_form$1.class
 Form\TrangChu_form$3.class

@@ -81,7 +81,7 @@
         <Component class="javax.swing.JLabel" name="themeCover_Login1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\tuann\Downloads\coverPanel.png"/>
+              <Image iconType="2" name="C:\Users\tuann\OneDrive\Ta&#x300;i li&#xea;&#x323;u\Baitap\n&#x103;m 3 k&#x1ef3; 3\Java n&#xe2;ng cao\Src\coverPanel.png"/>
             </Property>
           </Properties>
           <Constraints>
@@ -225,7 +225,7 @@
         <Component class="javax.swing.JLabel" name="btl_ChangetoDN">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\tuann\Downloads\btn_DangNhap.png"/>
+              <Image iconType="2" name="C:\Users\tuann\OneDrive\Ta&#x300;i li&#xea;&#x323;u\Baitap\n&#x103;m 3 k&#x1ef3; 3\Java n&#xe2;ng cao\Src\btn_DangNhap.png"/>
             </Property>
           </Properties>
           <Events>
@@ -233,7 +233,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="10" y="290" width="170" height="40"/>
+              <AbsoluteConstraints x="40" y="290" width="130" height="40"/>
             </Constraint>
           </Constraints>
         </Component>

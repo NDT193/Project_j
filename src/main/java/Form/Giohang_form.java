@@ -10,10 +10,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import env.Env;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -31,11 +33,17 @@ public class Giohang_form extends javax.swing.JPanel {
         initComponents();
 
         sv.FillData2GioHang(tableGiohang, Env.maSp, Env.soLuong, Env.gia);
-        JTextField[] txt = {txtMasp, txtTensp, txtSoluong, txtGiatien};
-        sv.PushDataTotxt(tableGiohang, txt);
+        //Set thời gian hệ thông cho txtfield
+        LocalDate currentDate = LocalDate.now();
+        String format_ngay = currentDate.toString();
+        SwingUtilities.invokeLater(() -> txtNgayban.setText(format_ngay));
+        //set title cho giỏ hàng
         Settille();
+        //Đổ dữ liệu lên txt
         Filldata2Text();
+        //TÍnh giá trị sản phẩm
         Cost();
+
     }
 
     /**
@@ -91,11 +99,16 @@ public class Giohang_form extends javax.swing.JPanel {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+        });
+        tableGiohang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableGiohangMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tableGiohang);
@@ -304,17 +317,27 @@ public class Giohang_form extends javax.swing.JPanel {
         // TODO add your handling code here:
         UpdateGiohang();
         Cost();
+        sv.FillData2GioHang(tableGiohang, Env.maSp, Env.soLuong, Env.gia);
     }//GEN-LAST:event_btlSuagiohangActionPerformed
 
     private void btlXoagiohangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btlXoagiohangActionPerformed
         DeletedGiohang();
         Cost();
+        sv.FillData2GioHang(tableGiohang, Env.maSp, Env.soLuong, Env.gia);
     }//GEN-LAST:event_btlXoagiohangActionPerformed
 
     private void btlThanhtoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btlThanhtoanActionPerformed
         // TODO add your handling code here:
         OrderProduct();
+        DeletedGiohang();
+        sv.FillData2GioHang(tableGiohang, Env.maSp, Env.soLuong, Env.gia);
     }//GEN-LAST:event_btlThanhtoanActionPerformed
+
+    private void tableGiohangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableGiohangMouseClicked
+        // TODO add your handling code here:
+        JTextField[] txt = {txtMasp, txtTensp, txtSoluong, txtGiatien};
+        sv.PushDataTotxt(tableGiohang, txt);
+    }//GEN-LAST:event_tableGiohangMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -457,61 +480,66 @@ public class Giohang_form extends javax.swing.JPanel {
 
         if (idexXoa != -1)//Tìm thấy mã sản phẩm
         {
-            if (idexXoa < Env.soLuong.size()) {
-                String newSoLuong = txtSoluong.getText();
-                Env.soLuong.set(idexXoa, newSoLuong);
+            Env.maSp.remove(SelectedmaSp);
+            Env.soLuong.remove(SelectedsoLuong);
+            Env.gia.remove(SelectedgiaBan);
 
-                //Update gio hang
-                String ArraymaSp = sv.arrayToString(Env.maSp);
-                String ArraysoLuong = sv.arrayToString(Env.soLuong);
-                String ArraygiaBan = sv.arrayToString(Env.gia);
+            String ArraymaSp = sv.arrayToString(Env.maSp);
+            String ArraysoLuong = sv.arrayToString(Env.soLuong);
+            String ArraygiaBan = sv.arrayToString(Env.gia);
 
-                List<Object> objectList = Arrays.asList(ArraymaSp, ArraysoLuong, ArraygiaBan);
-                List<Object> columnValues = Arrays.asList("maSp", "soLuong", "giaBan");
-                try {
-                    if (sv.UpdateData("giohang", "maKh", columnValues, objectList, Env.idKhach)) {
-                        Env.maSp.remove(SelectedmaSp);
-                        Env.soLuong.remove(SelectedsoLuong);
-                        Env.gia.remove(SelectedgiaBan);
+            List<Object> objectList = Arrays.asList(ArraymaSp, ArraysoLuong, ArraygiaBan);
+            List<Object> columnValues = Arrays.asList("maSp", "soLuong", "giaBan");
+            try {
+                if (sv.UpdateData("giohang", "maKh", columnValues, objectList, Env.idKhach)) {
 
-                        JOptionPane.showMessageDialog(null, "Xóa thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-                        sv.FillData2GioHang(tableGiohang, Env.maSp, Env.soLuong, Env.gia);
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Xóa không thành công!", "Lỗi", JOptionPane.ERROR_MESSAGE);
-                    }
-
-                } catch (Exception e) {
-                    e.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "Xóa thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                    sv.FillData2GioHang(tableGiohang, Env.maSp, Env.soLuong, Env.gia);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Xóa không thành công!", "Lỗi", JOptionPane.ERROR_MESSAGE);
                 }
 
-            } else {
-                System.out.println("Không tìm thấy số lượng tương ứng với mã sản phẩm " + SelectedmaSp);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         } else {
             // Mã sản phẩm không tồn tại trong danh sách Env.MaSp
             System.out.println("Mã sản phẩm " + SelectedmaSp + " không tồn tại trong danh sách Env.MaSp.");
         }
     }
-    
 
     private void OrderProduct() {
         Connection conn = new MyConnect().getConnection();
-        String maDon ="";
-        String maKh = txtmaKh.getText();
+        String maKh = Env.idKhach;
         String sdt = txtsdt.getText();
         String diachi = txtDiachi.getText();
-        
-        
+        String tenSp = txtTensp.getText();
+        String ngayban = txtNgayban.getText();
+        int int_soluong = Integer.valueOf(txtSoluong.getText());
+        int giaban = Integer.valueOf(txtGiatien.getText());
+
         try {
-           // String sql = 
-            
-            
-            
+            String sql = "Insert into donhang values(null, ?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+            String giathanh = String.valueOf(int_soluong * giaban);
+            String string_soluong = String.valueOf(int_soluong);
+
+            statement.setString(1, maKh);
+            statement.setString(2, sdt);
+            statement.setString(3, diachi);
+            statement.setString(4, tenSp);
+            statement.setString(5, giathanh);
+            statement.setString(6, string_soluong);
+            statement.setString(7, ngayban);
+
+            statement.executeUpdate();
+            statement.close();
+
+            conn.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
-    
 
 }

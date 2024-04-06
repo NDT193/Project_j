@@ -68,7 +68,7 @@ public class Chitietdonhang_panel extends javax.swing.JPanel {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -76,16 +76,6 @@ public class Chitietdonhang_panel extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(tableChitietdonhang);
-        if (tableChitietdonhang.getColumnModel().getColumnCount() > 0) {
-            tableChitietdonhang.getColumnModel().getColumn(0).setHeaderValue("Mã đơn");
-            tableChitietdonhang.getColumnModel().getColumn(1).setHeaderValue("Mã khách hàng");
-            tableChitietdonhang.getColumnModel().getColumn(2).setHeaderValue("Số điện thoại");
-            tableChitietdonhang.getColumnModel().getColumn(3).setHeaderValue("Địa chỉ");
-            tableChitietdonhang.getColumnModel().getColumn(4).setHeaderValue("Tên sản phẩm");
-            tableChitietdonhang.getColumnModel().getColumn(5).setHeaderValue("Giá bán");
-            tableChitietdonhang.getColumnModel().getColumn(6).setHeaderValue("Số lượng");
-            tableChitietdonhang.getColumnModel().getColumn(7).setHeaderValue("Ngày bán");
-        }
 
         jLabel1.setText("Tổng tiền:");
 

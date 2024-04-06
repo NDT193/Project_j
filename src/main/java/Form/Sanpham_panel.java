@@ -267,7 +267,16 @@ public class Sanpham_panel extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        Addata2Gio();
+        String masp = txtMasanpham.getText();
+        String soluong = txtSoluong.getText();
+        String giaban = txtGiaban.getText();
+        if (masp.isEmpty() || soluong.isEmpty() || giaban.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Xin mời chọn sản phẩm");
+        } else if (sv.isProductduplicate(masp)) {
+            JOptionPane.showMessageDialog(this, "Sản phẩm đã tồn tại trong giỏ hàng");
+        } else {
+            Addata2Gio(masp, soluong, giaban);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void tableSanphamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableSanphamMouseClicked
@@ -303,10 +312,11 @@ public class Sanpham_panel extends javax.swing.JPanel {
     private javax.swing.JTextField txtTimkiem;
     // End of variables declaration//GEN-END:variables
 
-    private void Addata2Gio() {
-        String masp = txtMasanpham.getText();
-        String soluong = txtSoluong.getText();
-        String giaban = txtGiaban.getText();
+    private void Addata2Gio(String masp, String soluong, String giaban) {
+
+        Env.maSp.add(masp);
+        Env.soLuong.add(soluong);
+        Env.gia.add(giaban);
 
         String maSpArray = sv.arrayToString(Env.maSp);
         String soLuongArray = sv.arrayToString(Env.soLuong);
@@ -316,14 +326,7 @@ public class Sanpham_panel extends javax.swing.JPanel {
         List<Object> columnValues = Arrays.asList("maSp", "soLuong", "giaBan");
 
         try {
-            if (masp.isEmpty() || soluong.isEmpty() || giaban.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Xin mời chọn sản phẩm");
-            } else if (sv.isProductduplicate(masp)) {
-                JOptionPane.showMessageDialog(this, "Sản phẩm đã tồn tại trong giỏ hàng");
-            } else if (sv.UpdateData("giohang", "maKh", columnValues, objectList, Env.idKhach)) {
-                Env.maSp.add(masp);
-                Env.soLuong.add(soluong);
-                Env.gia.add(giaban);
+            if (sv.UpdateData("giohang", "maKh", columnValues, objectList, Env.idKhach)) {
                 JOptionPane.showMessageDialog(null, "Thêm thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(null, "Không thể thêm thành công!", "Lỗi", JOptionPane.ERROR_MESSAGE);

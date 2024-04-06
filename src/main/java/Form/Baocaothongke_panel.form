@@ -86,11 +86,11 @@
               <Table columnCount="8" rowCount="4">
                 <Column editable="true" title="M&#xe3; &#x111;&#x1a1;n" type="java.lang.String"/>
                 <Column editable="true" title="M&#xe3; kh&#xe1;ch h&#xe0;ng" type="java.lang.String"/>
-                <Column editable="true" title="S&#x1ed1; &#x111;i&#x1ec7;n tho&#x1ea1;i" type="java.lang.Integer"/>
+                <Column editable="true" title="S&#x1ed1; &#x111;i&#x1ec7;n tho&#x1ea1;i" type="java.lang.String"/>
                 <Column editable="true" title="&#x110;&#x1ecb;a ch&#x1ec9;" type="java.lang.String"/>
                 <Column editable="true" title="T&#xea;n s&#x1ea3;n ph&#x1ea9;m" type="java.lang.String"/>
-                <Column editable="true" title="Gi&#xe1; b&#xe1;n" type="java.lang.Double"/>
-                <Column editable="true" title="S&#x1ed1; l&#x1b0;&#x1ee3;ng" type="java.lang.Integer"/>
+                <Column editable="true" title="Gi&#xe1; b&#xe1;n" type="java.lang.String"/>
+                <Column editable="true" title="S&#x1ed1; l&#x1b0;&#x1ee3;ng" type="java.lang.String"/>
                 <Column editable="true" title="Ng&#xe0;y b&#xe1;n" type="java.lang.String"/>
               </Table>
             </Property>

@@ -99,7 +99,7 @@ public class Login_form extends javax.swing.JFrame {
         });
         CoverPanelCDK_Login.add(btn_ChangetoDK, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 180, 40));
 
-        themeCover_Login1.setIcon(new javax.swing.ImageIcon("C:\\Users\\tuann\\Downloads\\coverPanel.png")); // NOI18N
+        themeCover_Login1.setIcon(new javax.swing.ImageIcon("C:\\Users\\tuann\\OneDrive\\Tài liệu\\Baitap\\năm 3 kỳ 3\\Java nâng cao\\Src\\coverPanel.png")); // NOI18N
         CoverPanelCDK_Login.add(themeCover_Login1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 360));
 
         getContentPane().add(CoverPanelCDK_Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 200, 360));
@@ -151,13 +151,13 @@ public class Login_form extends javax.swing.JFrame {
 
         CoverPanelCDN_Login.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btl_ChangetoDN.setIcon(new javax.swing.ImageIcon("C:\\Users\\tuann\\Downloads\\btn_DangNhap.png")); // NOI18N
+        btl_ChangetoDN.setIcon(new javax.swing.ImageIcon("C:\\Users\\tuann\\OneDrive\\Tài liệu\\Baitap\\năm 3 kỳ 3\\Java nâng cao\\Src\\btn_DangNhap.png")); // NOI18N
         btl_ChangetoDN.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btl_ChangetoDNMouseClicked(evt);
             }
         });
-        CoverPanelCDN_Login.add(btl_ChangetoDN, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 170, 40));
+        CoverPanelCDN_Login.add(btl_ChangetoDN, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 130, 40));
 
         themeCover_Login.setIcon(new javax.swing.ImageIcon("C:\\Users\\tuann\\OneDrive\\Tài liệu\\Baitap\\năm 3 kỳ 3\\Java nâng cao\\Src\\coverPanel.png")); // NOI18N
         CoverPanelCDN_Login.add(themeCover_Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 358));
@@ -202,7 +202,6 @@ public class Login_form extends javax.swing.JFrame {
         getContentPane().add(panel_DangKy, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 340, 360));
 
         Panel_bg_login.setBackground(new java.awt.Color(204, 255, 255));
-        Panel_bg_login.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Panel_bg_login.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(Panel_bg_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 360));
 

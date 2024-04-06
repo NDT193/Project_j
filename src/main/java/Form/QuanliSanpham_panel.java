@@ -28,6 +28,12 @@ public class QuanliSanpham_panel extends javax.swing.JPanel {
      */
     public QuanliSanpham_panel() {
         initComponents();
+        
+        ArrayList<String> data = sv.SetData4combobox("maDm", "danhmuc");
+        cbMadanhmuc.removeAllItems();
+        for (String item : data) {
+            cbMadanhmuc.addItem(item);
+        }
         sv.Loadata(tableSanpham, "sanpham");
     }
 

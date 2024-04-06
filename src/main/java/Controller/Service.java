@@ -382,25 +382,24 @@ public class Service {
     //------Đẩy dữ liệu từ database lên giỏ hàng------
     public void FillData2GioHang(JTable JtableName, List masp, List soluong, List gia) {
         List<String> listTensp = new ArrayList<>();
-        
+
         try {
             Connection conn = new MyConnect().getConnection();
             Statement st = conn.createStatement();
             ResultSet resultSet = null;
-            
-            for(int i=0; i<masp.size(); i++) {
+
+            for (int i = 0; i < masp.size(); i++) {
                 String sql = "SELECT tenSp FROM sanpham where maSp = '" + masp.get(i) + "'";
                 resultSet = st.executeQuery(sql);
-                
-                if(resultSet.next()){
+
+                if (resultSet.next()) {
                     listTensp.add(resultSet.getString("tenSp"));
-                }                
+                }
             }
-            
+
             st.close();
-            resultSet.close();
             conn.close();
-            
+
             DefaultTableModel model = (DefaultTableModel) JtableName.getModel();
             model.setRowCount(0);
             for (int i = 0; i < Env.maSp.size(); i++) {
@@ -432,14 +431,15 @@ public class Service {
                 String maSp = resultSet.getString("maSp");
                 String soLuong = resultSet.getString("soLuong");
                 String gia = resultSet.getString("giaBan");
-                List<String> MASP = convertToList(maSp);
-                List<String> SOLUONG = convertToList(soLuong);
-                List<String> GIA = convertToList(gia);
+                if ( maSp !=null && !maSp.equals("")) {
+                    List<String> MASP = convertToList(maSp);
+                    List<String> SOLUONG = convertToList(soLuong);
+                    List<String> GIA = convertToList(gia);
 
-                Env.maSp = MASP;
-                Env.soLuong = SOLUONG;
-                Env.gia = GIA;
-
+                    Env.maSp = MASP;
+                    Env.soLuong = SOLUONG;
+                    Env.gia = GIA;
+                }
             }
 
             // Đóng kết nối và tài nguyên
@@ -477,7 +477,7 @@ public class Service {
 
     }
 
-    //--------Chuyển đổi từ mảng về String
+    //--------Chuyển đổi từ danh sách về 1 chuỗi String
     public String arrayToString(List<String> list) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < list.size(); i++) {
@@ -489,7 +489,7 @@ public class Service {
         return sb.toString();
     }
 
-    //--------
+    //--------Chuyển đổi một chuỗi phần tử thành một danh sách
     private static List<String> convertToList(String str) {
         String[] strArray = str.split(",");
         List<String> list = new ArrayList<>(Arrays.asList(strArray));
@@ -497,24 +497,24 @@ public class Service {
         return list;
     }
 
-    public boolean isProductduplicate(String conditions){
+    public boolean isProductduplicate(String conditions) {
         boolean success = false;
         Connection conn = new MyConnect().getConnection();
         PreparedStatement stmt = null;
         ResultSet resultSet = null;
- 
+
         try {
             conn = new MyConnect().getConnection();
-        String sql = "SELECT COUNT(maSp) FROM giohang WHERE maSp LIKE ? AND maKh = ?";
-        stmt = conn.prepareStatement(sql);
-        stmt.setString(1, "%" + conditions + "%");
-        stmt.setString(2, Env.idKhach);
-        resultSet = stmt.executeQuery();
+            String sql = "SELECT COUNT(maSp) FROM giohang WHERE maSp LIKE ? AND maKh = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, "%" + conditions + "%");
+            stmt.setString(2, Env.idKhach);
+            resultSet = stmt.executeQuery();
 
-        if (resultSet.next()) {
-            int count = resultSet.getInt(1);
-            success = (count > 0);
-        }
+            if (resultSet.next()) {
+                int count = resultSet.getInt(1);
+                success = (count > 0);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
